@@ -15,6 +15,8 @@ namespace PukFramework {
 	public class STimer : MonoBehaviour, ITimer {
 		
 
+        // todo: estado timer dejo de correr en el timer persistente
+        public bool TimerDejoDeCorrer;// <- dejar dos opciones, una por evento
 		public bool TimerEstaCorriendo; // todo: proteger
 
 		//private bool _ActualizarTiempoEditor = false;
@@ -61,12 +63,11 @@ namespace PukFramework {
 		/// Reinicia la cuenta del contador del timer.
 		/// </summary>
 		public void ReniciarCuenta() {
-			//Debug.Log ("ResetTimer");
-			float segundosDescartados = (Timer.DuracionDelCicloEnSegundos - Timer.SegundosRestantes);
+            //Debug.Log ("ResetTimer");
+            float segundosDescartados = (Timer.DuracionDelCicloEnSegundos - Timer.SegundosRestantes);
 			Timer.SegundosAlIniciarTimer = Time.unscaledTime; // aplica para los ciclos
 			Timer.SegundosRestantes = Timer.DuracionDelCicloEnSegundos; // vista
-
-			if (TimerPausado) { // debuguear: pausar, resetear y reanudar: el timer debe iniciar normalmente
+            if (TimerPausado) { // debuguear: pausar, resetear y reanudar: el timer debe iniciar normalmente
 				Timer.SegundosAlIniciarTimer -= segundosDescartados; 
 			}
 		}
@@ -82,6 +83,7 @@ namespace PukFramework {
 			TimerPausado = false;
 			TimerEstaCorriendo = false;
 			TimerTerminaCiclo = false;
+            this.TimerDejoDeCorrer = false;
 		}
 
 		/// <summary>
@@ -111,7 +113,7 @@ namespace PukFramework {
 		/// Inicia el timer si no está corriendo.
 		/// </summary>
 		public bool Iniciar() {
-			//Debug.Log ("IniciarTimer");
+			Debug.Log ("IniciarTimer");
 			if (!TimerEstaCorriendo) {
 				Timer.SegundosAlIniciarTimer = Time.unscaledTime;
 				Timer.SegundosRestantes = Timer.DuracionDelCicloEnSegundos;
@@ -188,6 +190,7 @@ namespace PukFramework {
 		/// </summary>
 		protected virtual void TimerLLegaACero() {
 			TimerTerminaCiclo = true;
+            this.TimerDejoDeCorrer = true;
 
 			if (Timer.CiclosPendientes > 0) { //  en caso de eliminar ciclos de más
 				RestarCiclos ();

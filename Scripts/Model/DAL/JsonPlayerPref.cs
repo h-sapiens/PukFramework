@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace PukFramework.Model.DAL.PO {
+namespace PukFramework.Modelo.DAL.PO {
 	internal class JsonPlayerPref {
 		
 		internal bool Guardar<T>( string idNombre, T objeto) {

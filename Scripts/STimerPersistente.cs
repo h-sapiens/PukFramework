@@ -211,7 +211,7 @@ namespace PukFramework {
 		private bool CargarEstadoTimer() {
 
 			CTimer auxCTimer;
-			PukFramework.Model.MTimer auxMTimer = new PukFramework.Model.MTimer();
+			PukFramework.Modelo.MTimer auxMTimer = new PukFramework.Modelo.MTimer();
 
 			auxMTimer.CargarEstado (this.name);
 
@@ -235,7 +235,7 @@ namespace PukFramework {
 		/// </summary>
 		private bool GuardarEstadoTimer() {
 
-			PukFramework.Model.MTimer auxMTimer = new PukFramework.Model.MTimer ();
+			PukFramework.Modelo.MTimer auxMTimer = new PukFramework.Modelo.MTimer ();
 
 			auxMTimer.TimerCorriendo = this.TimerEstaCorriendo; 
 			auxMTimer.TimerTerminaCiclo = this.TimerTerminaCiclo;

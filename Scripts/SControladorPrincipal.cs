@@ -31,7 +31,8 @@ public class SControladorPrincipal : MonoBehaviour {
 	#if UNITY_EDITOR
 	// usar lógica que solo se necesite en el editor
 
-	private PuenteEditorStatics puenteEditor;
+	//private 
+	//PuenteEditorStatics puenteEditor;
 
 	#endif // UNITY_EDITOR
 
@@ -71,7 +72,7 @@ public class SControladorPrincipal : MonoBehaviour {
 //				
 //			}
 			switch (resultadoDelCargado) {
-			case PukFramework.Model.MBase.ERROR__NO_HAY_DATOS:
+			case PukFramework.Modelo.MBase.ERROR__NO_HAY_DATOS:
 				{
 					// mostrar error de mensaje
 					// de intentar más tarde
@@ -81,7 +82,7 @@ public class SControladorPrincipal : MonoBehaviour {
 					this.PuedeGuardarDatos = false;
 					break;
 				}
-			case PukFramework.Model.MBase.ERROR__INCONSISTENCIA_EN_FECHAS:
+			case PukFramework.Modelo.MBase.ERROR__INCONSISTENCIA_EN_FECHAS:
 				{					
 					// mostrar mensaje de que se perdieron datos desde la ultima sesión.
 					// VALIDAR DATOS RECUPERADOS Y MOSTRAR AVISO DE ERROR EN CASO DE QUE OCURRA ERROR.
@@ -124,8 +125,10 @@ public class SControladorPrincipal : MonoBehaviour {
 	private void Start() {   // todo: debuguar y aplicar logica a esta parte
 		short vidasGanadasDuranteJuegoCerrado = 0;
 
-		// Recuperar vidas
-		vidasGanadasDuranteJuegoCerrado = this.TimerVidas.ExtraerCiclosTranscurridos();
+        // Recuperar vidas
+        if (TimerVidas != null) {
+            vidasGanadasDuranteJuegoCerrado = this.TimerVidas.ExtraerCiclosTranscurridos();
+        }
 
 		// todo: validar logica cuando re
 		if (vidasGanadasDuranteJuegoCerrado > 0) {

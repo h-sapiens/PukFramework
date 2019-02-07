@@ -4,13 +4,13 @@
 
 //using UnityEngine;
 
-namespace PukFramework.Model.DAL {
+namespace PukFramework.Modelo.DAL {
 	internal class MTimer {
 		// todo: documentar codigo
-		internal bool Guardar( string idNombre, Model.MTimer timer) {
+		internal bool Guardar( string idNombre, Modelo.MTimer timer) {
 			// probablemente meter esto en un yield, si se traba por el fixed update
 
-			if (!(new DAL.PO.JsonPlayerPref().Guardar<Model.MTimer>(idNombre, timer))){
+			if (!(new DAL.PO.JsonPlayerPref().Guardar<Modelo.MTimer>(idNombre, timer))){
 				// registrar error.
 				return false;
 			} 
@@ -19,10 +19,10 @@ namespace PukFramework.Model.DAL {
 		}
 
 		// todo: documentar
-		internal bool Cargar(string idNombre, Model.MTimer timer) {
+		internal bool Cargar(string idNombre, Modelo.MTimer timer) {
 			// probablemente meter esto en un yield, si se traba por el fixed update
 
-			if (!(new DAL.PO.JsonPlayerPref ().Cargar<Model.MTimer> (idNombre, ref timer))) {
+			if (!(new DAL.PO.JsonPlayerPref ().Cargar<Modelo.MTimer> (idNombre, ref timer))) {
 				// registrar error.
 				return false;
 			}

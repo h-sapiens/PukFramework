@@ -1,4 +1,4 @@
-﻿namespace PukFramework.Model{
+﻿namespace PukFramework.Modelo{
 	internal class MBase {
 
 		internal const short ERROR__NO_HAY_DATOS = -1;

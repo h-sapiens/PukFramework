@@ -147,7 +147,7 @@ namespace PukFramework {
 		/// </summary>
 		/// No es estáticopara evitar que quede guardado innecesariamente en memoria.
 		internal short GuardarEstadoVidas() {
-			PukFramework.Model.MVidas mVidas = new PukFramework.Model.MVidas();
+			PukFramework.Modelo.MVidas mVidas = new PukFramework.Modelo.MVidas();
 
 			mVidas.VidasIniciales = SysVidasJuego.VidasIniciales;
 			mVidas.VidasMaximas = SysVidasJuego.VidasMaximas;
@@ -157,7 +157,7 @@ namespace PukFramework {
 			//mVidas.vidasPerdidas = SysVidasJuego.vidasPerdidas;
 
 			if (!mVidas.GuardarEstado ("SVidas")) {
-				return PukFramework.Model.MBase.ERROR__NO_HAY_DATOS;
+				return PukFramework.Modelo.MBase.ERROR__NO_HAY_DATOS;
 			} else {
 				return PukFramework.Estado.OK;
 			}
@@ -165,7 +165,7 @@ namespace PukFramework {
 
 		internal short CargarEstadoVidas() {
 			short resultado = PukFramework.Estado.OK;
-			PukFramework.Model.MVidas mVidas = new PukFramework.Model.MVidas();
+			PukFramework.Modelo.MVidas mVidas = new PukFramework.Modelo.MVidas();
 
 			mVidas.CargarEstado ("SVidas");
 

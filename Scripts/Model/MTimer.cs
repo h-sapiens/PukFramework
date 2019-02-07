@@ -1,6 +1,6 @@
 ﻿
 
-namespace PukFramework.Model {
+namespace PukFramework.Modelo {
 	internal class MTimer : MBase {
 
 		// **************
